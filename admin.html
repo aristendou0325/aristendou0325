@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客管理 - 文章上传</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 文章上传管理页面特定样式 */
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .admin-header h1 {
+            color: #2d3748;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .admin-header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .admin-form {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        .editor-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .toolbar {
+            background-color: #f7fafc;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 10px 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .toolbar button {
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .toolbar button:hover {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .content-area {
+            min-height: 300px;
+            padding: 20px;
+            outline: none;
+        }
+        
+        .submit-btn {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #5a67d8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .preview-btn {
+            background-color: #e2e8f0;
+            color: #2d3748;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .preview-btn:hover {
+            background-color: #cbd5e0;
+            transform: translateY(-1px);
+        }
+        
+        .preview-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-top: 40px;
+            display: none;
+        }
+        
+        .preview-container.active {
+            display: block;
+        }
+        
+        .preview-header {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .preview-header h2 {
+            color: #2d3748;
+        }
+        
+        .close-preview {
+            background: none;
+            border: none;
+            color: #718096;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .close-preview:hover {
+            color: #2d3748;
+        }
+        
+        .preview-content {
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            min-height: 45px;
+        }
+        
+        .tag {
+            background-color: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .tag-remove {
+            background: none;
+            border: none;
+            color: #718096;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+        }
+        
+        .tag-remove:hover {
+            color: #e53e3e;
+        }
+        
+        .tag-input-field {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 4px 0;
+            flex: 1;
+            min-width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h2>博客管理</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">返回首页</a></li>
+                <li><a href="admin.html" class="active">文章管理</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- 主内容区域 -->
+    <div class="admin-container">
+        <!-- 选项卡导航 -->
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="create">创建新文章</button>
+            <button class="tab-btn" data-tab="manage">管理文章</button>
+            <button class="tab-btn" data-tab="preview">文章预览</button>
+        </div>
+        
+        <!-- 文章表单区域 -->
+        <div class="tab-content active" id="tab-create">
+            <div class="admin-header">
+                <h1>文章上传管理</h1>
+                <p>创建和编辑您的博客文章</p>
+            </div>
+            
+            <!-- 文章表单 -->
+        <form id="articleForm" class="admin-form">
+            <div class="form-group">
+                <label for="title">文章标题</label>
+                <input type="text" id="title" name="title" placeholder="输入文章标题" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="author">作者</label>
+                <input type="text" id="author" name="author" placeholder="输入作者名称" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">发布日期</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">分类</label>
+                <select id="category" name="category" required>
+                    <option value="">选择分类</option>
+                    <option value="技术">技术</option>
+                    <option value="生活">生活</option>
+                    <option value="旅行">旅行</option>
+                    <option value="美食">美食</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="tags">标签</label>
+                <div class="tags-input" id="tagsInput">
+                    <input type="text" class="tag-input-field" placeholder="输入标签后按回车">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="content">文章内容</label>
+                <div class="editor-container">
+                    <!-- 编辑器工具栏 -->
+                    <div class="toolbar">
+                        <button type="button" onclick="formatText('bold')">粗体</button>
+                        <button type="button" onclick="formatText('italic')">斜体</button>
+                        <button type="button" onclick="formatText('underline')">下划线</button>
+                        <button type="button" onclick="formatText('h1')">H1</button>
+                        <button type="button" onclick="formatText('h2')">H2</button>
+                        <button type="button" onclick="formatText('h3')">H3</button>
+                        <button type="button" onclick="formatText('p')">段落</button>
+                        <button type="button" onclick="formatText('blockquote')">引用</button>
+                        <button type="button" onclick="formatText('insertUnorderedList')">无序列表</button>
+                        <button type="button" onclick="formatText('insertOrderedList')">有序列表</button>
+                        <button type="button" onclick="formatText('createLink')">链接</button>
+                    </div>
+                    <!-- 内容编辑区域 -->
+                    <div id="content" class="content-area" contenteditable="true" required></div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="excerpt">文章摘要</label>
+                <textarea id="excerpt" name="excerpt" placeholder="输入文章摘要（可选）"></textarea>
+            </div>
+            
+            <button type="button" class="preview-btn" id="previewButton">预览文章</button>
+            <button type="submit" class="submit-btn">保存文章</button>
+        </form>
+        
+        </div>
+            
+            <!-- 文章管理区域 -->
+            <div class="tab-content" id="tab-manage">
+                <div class="article-management-container">
+                    <h2>管理文章</h2>
+                    <div class="management-tools">
+                        <input type="text" id="search-articles" placeholder="搜索文章..." class="search-input">
+                        <button id="refresh-articles" class="btn-secondary">刷新列表</button>
+                        <button id="export-all-articles" class="btn-secondary">导出所有文章</button>
+                    </div>
+                    
+                    <div id="articles-list" class="articles-list">
+                        <p class="loading-message">加载文章中...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 文章预览区域 -->
+            <div class="tab-content" id="tab-preview">
+                <div class="article-preview-container">
+                    <h2>文章预览</h2>
+                    <div class="preview-controls">
+                        <select id="preview-article-select">
+                            <option value="">选择要预览的文章</option>
+                        </select>
+                        <button id="refresh-preview-list" class="btn-secondary">刷新列表</button>
+                    </div>
+                    
+                    <div id="article-preview" class="article-preview">
+                        <p class="no-preview">请选择一篇文章进行预览</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2024 博客管理系统. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 导入主要JavaScript文件 -->
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/test-upload.js"></script>
+</body>
+</html>
