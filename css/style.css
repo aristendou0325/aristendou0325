@@ -1,0 +1,935 @@
+/* ===================================================
+   全局样式和基础设置
+   =================================================== */
+
+/* CSS样式重置 - 消除浏览器默认样式差异 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局背景和字体设置 - 建立网站整体视觉风格 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    /* 几何背景图案 - 增强页面视觉层次感 */
+    background-image: 
+        radial-gradient(#e0e7ff 1px, transparent 1px),
+        radial-gradient(#e0e7ff 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    background-attachment: fixed;
+}
+
+/* 平滑滚动效果 - 提升用户浏览体验 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 文字选中样式 - 增强交互反馈 */
+::selection {
+    background-color: #667eea;
+    color: white;
+}
+
+/* Firefox 文字选中样式兼容 */
+::-moz-selection {
+    background-color: #667eea;
+    color: white;
+}
+
+/* ===================================================
+   布局组件样式
+   =================================================== */
+
+/* 容器样式 - 控制页面最大宽度和居中显示 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================================
+   头部样式
+   =================================================== */
+.header {
+    /* 渐变背景 - 为页面头部提供视觉吸引力 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+/* 头部标题样式 - 网站主标题 */
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* 头部副标题样式 - 网站描述信息 */
+.header-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ===================================================
+   导航栏样式
+   =================================================== */
+.navbar {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* 毛玻璃效果 - 增强视觉深度 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* 轻微阴影 - 营造悬浮感 */
+    position: sticky; /* 粘性定位 - 在滚动时保持在顶部 */
+    top: 0;
+    z-index: 100; /* 较高的堆叠顺序 - 确保在其他元素上方 */
+    transition: all 0.3s ease; /* 平滑过渡动画 */
+}
+
+/* 导航栏滚动效果 - 当用户滚动页面时的导航栏样式变化 */
+.navbar.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.98); /* 增加不透明度 - 滚动时更清晰 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 加深阴影 - 增强悬浮感 */
+    padding: 10px 0; /* 减少内边距 - 节省垂直空间 */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-right: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 5px 0;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #667eea;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #667eea;
+}
+
+/* 下拉菜单样式 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 8px 0;
+    margin-top: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: #667eea;
+}
+
+/* 搜索框样式 */
+.search-container {
+    display: flex;
+    position: relative;
+}
+
+.search-input {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px 0 0 25px;
+    outline: none;
+    width: 200px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.search-input:focus {
+    border-color: #667eea;
+    width: 230px;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.search-button {
+    padding: 8px 18px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.search-button:hover {
+    background-color: #5a67d8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
+/* 按钮点击波纹效果 */
+.search-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.search-button:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* 主内容区域 */
+.main-content {
+    padding: 40px 0;
+}
+
+.row {
+    display: flex;
+    gap: 30px;
+}
+
+/* 文章列表区域 */
+.content-wrapper {
+    flex: 3;
+}
+
+/* 文章样式 */
+.post {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.post:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.15);
+}
+
+.post-header {
+    margin-bottom: 20px;
+}
+
+.post-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.post-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.post-title a:hover {
+    color: #667eea;
+}
+
+.post-meta {
+    display: flex;
+    gap: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.post-meta a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.post-content {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.read-more:hover {
+    background-color: #5a67d8;
+}
+
+.post-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.post-tags a {
+    padding: 4px 10px;
+    background-color: #f0f0f0;
+    color: #666;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+.post-tags a:hover {
+    background-color: #667eea;
+    color: white;
+}
+
+/* 分页样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.pagination a {
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.pagination a.active {
+    background-color: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+/* ===================================================
+   侧边栏小部件样式
+   =================================================== */
+
+/* 侧边栏容器 - 控制侧边栏在页面中的比例 */
+.sidebar {
+    flex: 1;
+}
+
+/* 侧边栏小部件基础样式 - 为每个小部件提供统一外观 */
+.widget {
+    background-color: white;
+    border-radius: 12px; /* 圆角边框 - 增强现代感 */
+    padding: 25px; /* 内部填充 - 提供合适的内容间距 */
+    margin-bottom: 30px; /* 底部外边距 - 小部件之间的垂直间距 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* 阴影效果 - 营造悬浮感 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡动画 - 平滑的交互效果 */
+    position: relative; /* 相对定位 - 为伪元素提供定位基准 */
+    overflow: hidden; /* 溢出隐藏 - 确保内容不会超出容器 */
+}
+
+/* 小部件顶部渐变装饰条 - 增强视觉识别度 */
+.widget::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+/* 小部件悬停效果 - 提升用户交互体验 */
+.widget:hover {
+    transform: translateY(-3px); /* 上移效果 - 增强立体感 */
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.12); /* 加深阴影 - 增强悬浮效果 */
+}
+
+/* 小部件标题样式 - 区分不同小部件的标题 */
+.widget-title {
+    font-size: 1.2rem; /* 字体大小 - 保持标题清晰可见 */
+    margin-bottom: 20px; /* 底部外边距 - 与内容保持距离 */
+    padding-bottom: 10px; /* 底部内边距 - 为下划线提供空间 */
+    border-bottom: 2px solid #667eea; /* 底部边框 - 视觉分隔 */
+    position: relative; /* 相对定位 - 为伪元素提供定位基准 */
+    font-weight: 600; /* 字体粗细 - 突出标题重要性 */
+    color: #2d3748;
+}
+
+/* 小部件标题装饰元素 - 增强视觉吸引力 */
+.widget-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #764ba2;
+}
+
+/* 作者信息 */
+.author-info {
+    text-align: center;
+}
+
+.author-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f0f0;
+    margin-bottom: 15px;
+}
+
+.author-bio {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 分类列表 */
+.category-list {
+    list-style: none;
+}
+
+.category-list li {
+    margin-bottom: 10px;
+}
+
+.category-list a {
+    display: block;
+    padding: 8px 0;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    padding-left: 20px;
+}
+
+.category-list a::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+}
+
+.category-list a:hover {
+    color: #667eea;
+    padding-left: 25px;
+}
+
+/* ===================================================
+   标签云样式
+   =================================================== */
+
+/* 标签云容器 - 灵活布局的标签网格 */
+.tag-cloud {
+    display: flex; /* 弹性盒布局 - 允许标签自动换行 */
+    flex-wrap: wrap; /* 允许换行 - 适应不同宽度 */
+    gap: 10px; /* 标签间距 - 提供视觉分隔 */
+    line-height: 1.8; /* 行高 - 确保文本可读性 */
+    padding: 10px 0; /* 上下内边距 - 与小部件边界保持距离 */
+}
+
+/* 标签基础样式 - 统一的视觉风格 */
+.tag-cloud a {
+    padding: 6px 14px; /* 内边距 - 确保标签易于点击 */
+    background-color: #f0f0f0; /* 背景色 - 与白色背景形成对比 */
+    color: #666; /* 文字颜色 - 保持可读性 */
+    text-decoration: none; /* 移除下划线 - 现代设计风格 */
+    border-radius: 18px; /* 圆形标签 - 增强现代感 */
+    font-size: 0.9rem; /* 字体大小 - 适合标签内容 */
+    font-weight: 500; /* 字体粗细 - 稍微突出 */
+    transition: all 0.3s ease; /* 过渡动画 - 平滑的交互效果 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 轻微阴影 - 增加层次感 */
+}
+
+/* 标签悬停效果 - 突出显示当前交互的标签 */
+.tag-cloud a:hover {
+    background-color: #667eea; /* 改变背景色 - 视觉反馈 */
+    color: white; /* 文字颜色反转 - 确保可读性 */
+    transform: translateY(-2px); /* 上移效果 - 增强立体感 */
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3); /* 增强阴影 - 悬浮效果 */
+}
+
+/* 根据标签频率调整标签大小和颜色 - 提供视觉层次感 */
+/* 最小标签 - 表示使用频率较低的标签 */
+.tag-cloud a.tag-size-1 { font-size: 0.85rem; color: #999; }
+/* 次小标签 - 表示使用频率较低的标签 */
+.tag-cloud a.tag-size-2 { font-size: 0.9rem; color: #777; }
+/* 中等标签 - 表示使用频率中等的标签 */
+.tag-cloud a.tag-size-3 { font-size: 1rem; color: #555; }
+/* 较大标签 - 表示使用频率较高的标签 */
+.tag-cloud a.tag-size-4 { font-size: 1.1rem; color: #333; }
+/* 最大标签 - 表示使用频率最高的标签 */
+.tag-cloud a.tag-size-5 { font-size: 1.2rem; color: #111; font-weight: bold; }
+
+/* 搜索消息样式 */
+.search-message {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 热门文章 */
+.popular-posts {
+    list-style: none;
+}
+
+.popular-posts li {
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.popular-posts li:last-child {
+    border-bottom: none;
+}
+
+.popular-posts a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.popular-posts a:hover {
+    color: #667eea;
+}
+
+.popular-posts .post-date {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* ===================================================
+   交互元素样式
+   =================================================== */
+
+/* 返回顶部按钮样式 - 提供快速导航功能 */
+.back-to-top {
+    position: fixed; /* 固定定位 - 始终在视口右下角 */
+    bottom: 30px; /* 距底部距离 - 确保不被其他元素遮挡 */
+    right: 30px; /* 距右侧距离 - 确保不被其他元素遮挡 */
+    width: 45px; /* 宽度 - 适合点击的尺寸 */
+    height: 45px; /* 高度 - 正方形设计 */
+    background-color: #667eea; /* 主题色 - 保持一致性 */
+    color: white; /* 文字颜色 - 对比背景 */
+    border-radius: 50%; /* 圆形设计 - 现代感 */
+    display: flex; /* 弹性盒布局 - 内容居中 */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* 鼠标指针 - 指示可点击 */
+    opacity: 0; /* 默认隐藏 - 通过JS控制显示 */
+    visibility: hidden;
+    transition: all 0.3s ease; /* 过渡动画 - 平滑显示/隐藏 */
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); /* 阴影效果 - 悬浮感 */
+    z-index: 99; /* 较高层级 - 确保在其他内容之上 */
+}
+
+/* 返回顶部按钮显示状态 - 当用户滚动页面后出现 */
+.back-to-top.show {
+    opacity: 1; /* 完全可见 */
+    visibility: visible;
+}
+
+/* 返回顶部按钮悬停效果 - 增强交互反馈 */
+.back-to-top:hover {
+    background-color: #5a67d8; /* 深色变体 - 视觉反馈 */
+    transform: translateY(-3px); /* 上移效果 - 增强立体感 */
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5); /* 增强阴影 - 悬浮效果 */
+}
+
+/* 返回顶部按钮点击效果 - 提供即时反馈 */
+.back-to-top:active {
+    transform: translateY(-1px); /* 轻微回弹 - 点击反馈 */
+}
+
+/* 元素进入动画样式 - 增强页面滚动时的视觉体验 */
+.fade-in {
+    opacity: 0; /* 默认透明 */
+    transform: translateY(20px); /* 下移位置 */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* 过渡动画 - 平滑显示 */
+}
+
+/* 元素可见状态 - 通过JS添加此类使元素淡入 */
+.fade-in.visible {
+    opacity: 1; /* 完全可见 */
+    transform: translateY(0); /* 回到正常位置 */
+}
+
+/* 加载动画 - 定义元素进入视口时的动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 应用动画到文章和小部件 - 初始状态为暂停 */
+.post,
+.widget {
+    animation: fadeIn 0.5s ease forwards; /* 应用淡入动画 */
+    animation-play-state: paused; /* 暂停动画 - 等待JS触发 */
+}
+
+/* 激活动画 - 当元素进入视口时由JS添加此类 */
+.post.animated,
+.widget.animated {
+    animation-play-state: running; /* 运行动画 */
+}
+
+/* 标签点击效果 - 为可点击标签提供额外视觉反馈 */
+.tag {
+    transition: all 0.3s ease; /* 过渡动画 - 平滑效果 */
+    position: relative; /* 相对定位 - 为伪元素提供基准 */
+    overflow: hidden; /* 溢出隐藏 - 确保伪元素不会超出 */
+}
+
+/* 标签下划线动画 - 悬停时从左到右出现 */
+.tag::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* 初始宽度为0 */
+    height: 2px;
+    background-color: currentColor; /* 使用当前文字颜色 */
+    transition: width 0.3s ease; /* 过渡动画 - 平滑扩展 */
+}
+
+/* 标签悬停状态 - 下划线展开 */
+.tag:hover::after {
+    width: 100%; /* 宽度扩展到100% */
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #2d3748;
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.footer-info,
+.footer-links,
+.footer-social {
+    flex: 1;
+}
+
+.footer-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.footer-info p {
+    color: #a0aec0;
+    line-height: 1.6;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    display: block;
+    color: #a0aec0;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #667eea;
+}
+
+.footer-social a {
+    display: inline-block;
+    color: #a0aec0;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #667eea;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #4a5568;
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+/* ===================================================
+   响应式设计
+   =================================================== */
+
+/* 大屏幕响应式调整 - 平板设备(992px) */
+@media (max-width: 992px) {
+    /* 内容布局调整 - 堆叠布局 */
+    .row {
+        flex-direction: column; /* 垂直堆叠内容和侧边栏 */
+    }
+    
+    /* 侧边栏位置调整 - 在内容上方显示 */
+    .sidebar {
+        order: -1; /* 调整顺序 - 侧边栏先显示 */
+    }
+    
+    /* 容器最大宽度 - 适应中等屏幕 */
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* 中等屏幕响应式调整 - 手机横屏(768px) */
+@media (max-width: 768px) {
+    /* 导航栏布局调整 - 垂直居中 */
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* 导航链接布局 - 居中排列 */
+    .nav-links {
+        justify-content: center; /* 水平居中 */
+        flex-wrap: wrap; /* 允许换行 */
+    }
+    
+    /* 导航链接间距 - 减少间距以适应屏幕 */
+    .nav-links li {
+        margin: 0 10px;
+    }
+    
+    /* 移动端下拉菜单调整 - 适应触摸设备 */
+    .dropdown-menu {
+        position: static; /* 静态定位 - 避免覆盖问题 */
+        display: none; /* 默认隐藏 */
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none; /* 移除阴影 - 简化移动设计 */
+        border-top: 1px solid #f0f0f0; /* 添加分隔线 - 视觉区分 */
+    }
+    
+    /* 下拉菜单显示 - 悬停时显示 */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .header-content h1 {
+        font-size: 2rem;
+    }
+    
+    .post-title {
+        font-size: 1.5rem;
+    }
+    
+    /* 文章和小部件样式调整 */
+    .post,
+    .widget {
+        border-radius: 10px;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .post-title {
+        font-size: 1.3rem;
+    }
+    
+    .search-container {
+        width: 100%;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .nav-links li {
+        margin: 2px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .post,
+    .widget {
+        padding: 20px;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 0.8rem;
+    }
+    
+    .post-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .tag-cloud a {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .pagination a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+}
