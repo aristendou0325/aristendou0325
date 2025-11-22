@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 网页基本信息 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>airs的个人博客 | 记录生活，分享思考</title>
+    <meta name="keywords" content="个人博客, 生活记录, 技术分享">
+    <meta name="author" content="airs">
+    <meta name="description" content="airs的个人博客，分享生活点滴和技术心得">
+    
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 头部区域 - 展示博客标题和简介 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">airs的博客</h1>
+                <p class="site-description">记录生活，分享思考</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 导航栏 - 包含导航链接、分类下拉菜单和搜索功能 -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="#">文章</a></li>
+                <!-- 分类下拉菜单 -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">分类 <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">生活随笔</a>
+                        <a href="#" class="dropdown-item">技术分享</a>
+                        <a href="#" class="dropdown-item">学习笔记</a>
+                        <a href="#" class="dropdown-item">旅行见闻</a>
+                    </div>
+                </li>
+                <li><a href="#">标签</a></li>
+                <li><a href="#">关于我</a></li>
+            </ul>
+            <!-- 搜索功能 -->
+            <div class="search-container">
+                <input type="text" placeholder="搜索文章..." class="search-input">
+                <button class="search-button">搜索</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <div class="row">
+                <!-- 博客文章列表 - 展示博客文章 -->
+                <div class="content-wrapper">
+                    <!-- 文章预览 1 -->
+                    <!-- 静态文章1 - 动态加载会覆盖 -->
+                    <article class="post">
+                        <div class="post-header">
+                            <h2 class="post-title"><a href="article.html?id=welcome-post">欢迎来到我的个人博客</a></h2>
+                            <div class="post-meta">
+                                <span class="post-date">2024-01-15</span>
+                                <span class="post-category"><a href="#">生活随笔</a></span>
+                                <span class="post-comments">5 条评论</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>这是我的第一篇博客文章，欢迎大家访问我的个人博客。在这里，我将记录我的生活点滴、学习心得和技术分享。希望能够与大家共同进步，一起成长。</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="article.html?id=welcome-post" class="read-more">阅读更多</a>
+                            <div class="post-tags">
+                                <a href="#">博客</a>
+                                <a href="#">生活</a>
+                                <a href="#">分享</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 静态文章2 - 动态加载会覆盖 -->
+                    <article class="post">
+                        <div class="post-header">
+                            <h2 class="post-title"><a href="article.html?id=html5-notes">HTML5学习笔记</a></h2>
+                            <div class="post-meta">
+                                <span class="post-date">2024-01-10</span>
+                                <span class="post-category"><a href="#">技术分享</a></span>
+                                <span class="post-comments">3 条评论</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>最近学习了HTML5的一些新特性，感觉非常实用。特别是语义化标签、Canvas绘图和响应式设计等内容，让网页开发变得更加高效和灵活。今天我想分享一些学习心得...</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="article.html?id=html5-notes" class="read-more">阅读更多</a>
+                            <div class="post-tags">
+                                <a href="#">HTML5</a>
+                                <a href="#">前端</a>
+                                <a href="#">学习笔记</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 静态文章3 - 动态加载会覆盖 -->
+                    <article class="post">
+                        <div class="post-header">
+                            <h2 class="post-title"><a href="article.html?id=chinese-festivals">中国传统节日文化探索</a></h2>
+                            <div class="post-meta">
+                                <span class="post-date">2024-01-05</span>
+                                <span class="post-category"><a href="#">文化研究</a></span>
+                                <span class="post-comments">8 条评论</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>中国传统节日承载着丰富的文化内涵，从春节、端午节到中秋节，每个节日都有其独特的历史背景和习俗。通过深入了解这些传统节日，我们可以更好地传承和弘扬中华文化...</p>
+                        </div>
+                        <div class="post-footer">
+                            <a href="article.html?id=chinese-festivals" class="read-more">阅读更多</a>
+                            <div class="post-tags">
+                                <a href="#">传统文化</a>
+                                <a href="#">节日</a>
+                                <a href="#">习俗</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 分页 -->
+                    <div class="pagination">
+                        <a href="#" class="prev-page">上一页</a>
+                        <a href="#" class="page active">1</a>
+                        <a href="#" class="page">2</a>
+                        <a href="#" class="page">3</a>
+                        <a href="#" class="next-page">下一页</a>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 - 包含作者信息、分类列表、标签云和热门文章 -->
+                <aside class="sidebar">
+                    <!-- 作者信息 -->
+                    <div class="widget">
+                        <h3 class="widget-title">关于博主</h3>
+                        <div class="author-info">
+                            <img src="css/images/MVIMG_20251026_191952.jpg" alt="博主头像" class="author-avatar">
+                            <p class="author-bio">大家好，我是airs，一个热爱技术和生活的博主。希望通过这个博客与大家分享我的学习心得和生活点滴。</p>
+                        </div>
+                    </div>
+
+                    <!-- 分类 -->
+                    <div class="widget">
+                        <h3 class="widget-title">文章分类</h3>
+                        <ul class="category-list">
+                            <li><a href="#">生活随笔 (12)</a></li>
+                            <li><a href="#">技术分享 (8)</a></li>
+                            <li><a href="#">文化研究 (5)</a></li>
+                            <li><a href="#">旅行见闻 (3)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 标签云 -->
+                    <div class="widget">
+                        <h3 class="widget-title">标签云</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag-size-5">博客</a>
+                            <a href="#" class="tag-size-4">生活</a>
+                            <a href="#" class="tag-size-3">HTML5</a>
+                            <a href="#" class="tag-size-3">CSS3</a>
+                            <a href="#" class="tag-size-4">JavaScript</a>
+                            <a href="#" class="tag-size-2">传统文化</a>
+                            <a href="#" class="tag-size-2">旅行</a>
+                            <a href="#" class="tag-size-1">美食</a>
+                            <a href="#" class="tag-size-5">技术</a>
+                            <a href="#" class="tag-size-3">分享</a>
+                            <a href="#" class="tag-size-4">学习</a>
+                            <a href="#" class="tag-size-4">前端</a>
+                            <a href="#" class="tag-size-1">笔记</a>
+                            <a href="#" class="tag-size-3">编程</a>
+                            <a href="#" class="tag-size-2">设计</a>
+                            <a href="#" class="tag-size-3">思考</a>
+                        </div>
+                    </div>
+
+                    <!-- 热门文章 -->
+                    <div class="widget">
+                        <h3 class="widget-title">热门文章</h3>
+                        <ul class="popular-posts">
+                            <li>
+                                <a href="article.html?id=welcome-post" class="post-title">欢迎来到我的个人博客</a>
+                                <span class="post-date">2024-01-15</span>
+                            </li>
+                            <li>
+                                <a href="article.html?id=html5-notes" class="post-title">HTML5学习笔记</a>
+                                <span class="post-date">2024-01-10</span>
+                            </li>
+                            <li>
+                                <a href="article.html?id=chinese-festivals" class="post-title">中国传统节日文化探索</a>
+                                <span class="post-date">2024-01-05</span>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 - 展示版权信息和其他链接 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>airs的博客</h3>
+                    <p>记录生活，分享思考</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">关于我</a>
+                    <a href="#">联系方式</a>
+                    <a href="#">隐私政策</a>
+                    <a href="#">使用条款</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" title="微博">微博</a>
+                    <a href="#" title="GitHub">GitHub</a>
+                    <a href="#" title="知乎">知乎</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 airs的博客. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript - 包含博客交互功能 -->
+    <script src="js/article-generator.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/test-upload.js"></script>
+</body>
+</html>
