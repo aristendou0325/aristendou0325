@@ -1,169 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<title>airs的站点</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-    box-sizing: border-box;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>airs 的个人博客</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f7f7f7; }
 
-/* body 样式 */
-body {
-    font-family: Arial;
-    margin: 0;
-}
-
-/* 标题 */
-.header {
-    padding: 80px;
-    text-align: center;
-    background: #1abc9c;
-    color: white;
-}
-
-/* 标题字体加大 */
-.header h1 {
-    font-size: 40px;
-}
-
-/* 导航 */
-.navbar {
-    overflow: hidden;
-    background-color: #333;
-}
-
-/* 导航栏样式 */
-.navbar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-/* 右侧链接*/
-.navbar a.right {
-    float: right;
-}
-
-/* 鼠标移动到链接的颜色 */
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* 列容器 */
-.row {  
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-}
-
-/* 创建两个列 */
-/* 边栏 */
-.side {
-    -ms-flex: 30%; /* IE10 */
-    flex: 30%;
-    background-color: #f1f1f1;
-    padding: 20px;
-}
-
-/* 主要的内容区域 */
-.main {   
-    -ms-flex: 70%; /* IE10 */
-    flex: 70%;
-    background-color: white;
-    padding: 20px;
-}
-
-/* 测试图片 */
-.fakeimg {
-    background-color: #aaa;
-    width: 100%;
-    padding: 20px;
-}
-
-/* 底部 */
-.footer {
-    padding: 20px;
-    text-align: center;
-    background: #ddd;
-}
-
-/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
-@media screen and (max-width: 700px) {
-    .row {   
-        flex-direction: column;
+    /* 顶部导航栏 */
+    header {
+      background: #1abc9c;
+      padding: 30px;
+      text-align: center;
+      color: white;
     }
-}
+    header h1 { font-size: 48px; margin-bottom: 10px; }
 
-/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
-@media screen and (max-width: 400px) {
-    .navbar a {
-        float: none;
-        width: 100%;
- }
-/*css图像自适应*/
-div {
-  position: relative;
-}
+    /* 导航 */
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background: #ddd;
+      color: black;
+    }
 
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}	
-}
-</style>
+    /* 主体布局 */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      gap: 20px;
+    }
+
+    /* 左侧个人栏 */
+    .sidebar {
+      width: 25%;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .profile img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .profile h3 { margin: 10px 0; }
+
+    /* 博客主体 */
+    .main {
+      width: 75%;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* 单个博客卡片 */
+    .post {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    .post h2 { margin-bottom: 10px; }
+    .post small { color: gray; }
+    .post img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    /* 底部 */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background: #ddd;
+    }
+
+    /* 互动按钮 */
+    .like-btn {
+      background: #1abc9c;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .like-btn:hover {
+      background: #17a589;
+    }
+
+  </style>
+  <script>
+    function likePost(id) {
+      const counter = document.getElementById('like-' + id);
+      let count = parseInt(counter.innerText);
+      counter.innerText = count + 1;
+    }
+  </script>
 </head>
 <body>
 
-<div class="header">
-  <h1>网页测试</h1>
-  <p>一个页面。</p>
-</div>
+<header>
+  <h1>airs 的个人博客</h1>
+  <p>记录生活・技术・随想</p>
+</header>
 
-<div class="navbar">
-  <a href="https://www.google.com/" class="right">测试</a>
-  <a href="https://www.youtube.com/"class="right">测试3</a>
-  <a href="https://www.pixiv.net/"class="right">链接</a>
-  <a href="https://www.bing.com/" class="right">测试2</a>
-</div>
+<nav>
+  <a href="#">主页</a>
+  <a href="#">归档</a>
+  <a href="#">关于我</a>
+  <a href="#">外部链接</a>
+</nav>
 
-<div class="row">
-  <div class="side">
-      <h2>关于airs站点</h2>
-      <h5>我的照片:</h5>
-      <div class="fakeimg" style="height:200px;"><img src="cirno.jpg" width="300" height="120"/> </div>
-      <p>关于airs站点的介绍..</p>
-      <h3>更多内容</h3>
-      <p>我的更多内容</p>
-      <div class="fakeimg" style="height:60px;"><img src="xQc.gif" alt="you lost bro"> </div><br>
-      <div class="fakeimg" style="height:60px;">这边插入图像</div><br>
-      <div class="fakeimg" style="height:60px;">这边插入图像</div>
+<div class="container">
+
+  <!-- 左侧栏 -->
+  <div class="sidebar">
+    <div class="profile">
+      <img src="cirno.jpg" alt="头像" />
+      <h3>airs</h3>
+      <p>这里是我的个人空间，我会在这里分享学习、编程和兴趣内容。</p>
+    </div>
+    <hr>
+    <h4>快速链接</h4>
+    <ul>
+      <li><a href="https://www.google.com/">Google</a></li>
+      <li><a href="https://www.pixiv.net/">Pixiv</a></li>
+      <li><a href="https://www.runoob.com/">HTML 教程</a></li>
+    </ul>
   </div>
+
+  <!-- 右侧博客主体 -->
   <div class="main">
-      <h2>标题</h2>
-      <h5>副标题</h5>
-      <div class="fakeimg" style="height:200px;">图像</div>
-      <p>一些文本..</p>
-      <p>本网页由个人搭建</p>
-      <br>
-      <h2>标题</h2>
-      <h5>副标题</h5>
-      <div class="fakeimg" style="height:200px;">图像</div>
-      <p>一些文本..</p>
-      <p>菜鸟教程，学的不仅是技术，更是梦想！！！菜鸟教程，学的不仅是技术，更是梦想！！！菜鸟教程，学的不仅是技术，更是梦想！！！<a href="https://www.runoob.com/">点这里</a> 是教你学HTML的链接。</p></p>
+
+    <div class="post">
+      <h2>欢迎来到我的博客</h2>
+      <small>发布于 2025-01-01</small>
+      <img src="xQc.gif" alt="封面图">
+      <p>这是我的第一个博客页面。我希望用它记录每天学习的进度，以及一些生活上的灵感想法。</p>
+      <button class="like-btn" onclick="likePost(1)">点赞</button> ❤️ <span id="like-1">0</span>
+    </div>
+
+    <div class="post">
+      <h2>网站搭建进度</h2>
+      <small>发布于 2025-01-02</small>
+      <img src="cirno.jpg" alt="示例图">
+      <p>今天我重构了网页结构，加入了博客系统、点赞按钮以及响应式布局。</p>
+      <button class="like-btn" onclick="likePost(2)">点赞</button> ❤️ <span id="like-2">0</span>
+    </div>
+
   </div>
 </div>
 
-<div class="footer">
-  <h2>底部内容</h2>
-</div>
+<footer>
+  <p>© 2025 airs 的博客 — 个人学习记录站点</p>
+</footer>
 
 </body>
-    </html>
+</html>
