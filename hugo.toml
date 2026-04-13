@@ -1,4 +1,4 @@
 baseURL = 'https://aristendou0325.pages.dev/'
-languageCode = 'en-us'
-title = 'Ollama'
+languageCode = 'zh-cn'
+title = 'aristendou的测试博客'
 theme = 'PaperMod'

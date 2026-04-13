@@ -2,6 +2,7 @@
 date = '2026-04-13T19:56:13+08:00'
 draft = false
 title = '没有内容'
+type: 'posts'
 +++
 
 ---
