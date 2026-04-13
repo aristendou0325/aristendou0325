@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ollama</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Ollama</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2026 15:23:41 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ollama</title>
+      <link>http://localhost:1313/posts/test1/</link>
+      <pubDate>Mon, 13 Apr 2026 15:23:41 +0800</pubDate>
+      <guid>http://localhost:1313/posts/test1/</guid>
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;-一你现在这个系统的使用方式最基础&#34;&gt;🧠 一、你现在这个系统的使用方式（最基础）&lt;/h1&gt;
+&lt;p&gt;你现在已经有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;main.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;codebase/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Ollama&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-日常使用流程以后就这么用&#34;&gt;✅ 日常使用流程（以后就这么用）&lt;/h2&gt;
+&lt;h3 id=&#34;1-打开终端&#34;&gt;1️⃣ 打开终端&lt;/h3&gt;
+&lt;p&gt;进入你的项目：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd D:&lt;span style=&#34;color:#ae81ff&#34;&gt;\p&lt;/span&gt;rojects&lt;span style=&#34;color:#ae81ff&#34;&gt;\m&lt;/span&gt;y_ai_project
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;2-启动-ollama如果没自动启动&#34;&gt;2️⃣ 启动 Ollama（如果没自动启动）&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ollama run llama3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;（或者你用 &lt;code&gt;ollama serve&lt;/code&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3-运行你的-ai&#34;&gt;3️⃣ 运行你的 AI&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python main.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;4-开始问问题&#34;&gt;4️⃣ 开始问问题&lt;/h3&gt;
+&lt;p&gt;比如你写代码时：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;你: quick_sort 这个函数可以优化吗？
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;你: 我代码里有没有重复逻辑？
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;你: 帮我基于已有代码写一个新函数
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;👉 它会用你的代码来回答&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;-二你以后怎么喂数据&#34;&gt;🧩 二、你以后怎么“喂数据”&lt;/h1&gt;
+&lt;p&gt;这个系统的核心是：&lt;/p&gt;
+&lt;p&gt;👉 &lt;strong&gt;codebase 文件夹 = 你的知识库&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-使用方式很简单&#34;&gt;📁 使用方式很简单：&lt;/h2&gt;
+&lt;h3 id=&#34;-方法1直接丢文件进去&#34;&gt;👉 方法1：直接丢文件进去&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;codebase/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    project1.py
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    crawler.py
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ai_utils.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;-方法2放整个项目&#34;&gt;👉 方法2：放整个项目&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;codebase/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    my_web_project/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    my_ai_project/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;👉 然后重新运行 &lt;code&gt;main.py&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
