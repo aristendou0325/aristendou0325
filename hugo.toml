@@ -1,4 +1,14 @@
 baseURL = 'https://10douaris.top/'
 languageCode = 'zh-cn'
 title = 'aristendou的测试博客'
-theme = 'PaperMod'
+theme = 'stack'
+
+[params]
+  mainSections = ["posts"]
+
+[params.sidebar]
+  subtitle = "欢迎来到我的网站"
+
+[params.article]
+  math = false
+  toc = true
