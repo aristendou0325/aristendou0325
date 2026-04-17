@@ -12,3 +12,7 @@ theme = 'stack'
 [params.article]
   math = false
   toc = true
+
+[[menu.main]]
+  name = "下载中心"
+  url = "https://download.10douaris.top/"
