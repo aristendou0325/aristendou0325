@@ -16,3 +16,13 @@ theme = 'stack'
 [[menu.main]]
   name = "下载中心"
   url = "https://download.10douaris.top/"
+
+  [markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  
+[[menu.main]]
+  name = "📚 书库"
+  url = "/books/"
+  weight = 3
