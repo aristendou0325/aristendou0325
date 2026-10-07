@@ -4,6 +4,7 @@
 /public/
 /resources/_gen/
 .hugo_build.lock
+/.hugo_cache/
 
 # ---------------------------------------------------------------
 # 本地工具环境（conda / venv）—— 体积巨大，绝不入库

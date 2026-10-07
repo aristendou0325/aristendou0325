@@ -13,16 +13,25 @@ theme = 'stack'
   math = false
   toc = true
 
+# ---------------------------------------------------------------------
+# 菜单
+# ---------------------------------------------------------------------
 [[menu.main]]
   name = "下载中心"
   url = "https://download.10douaris.top/"
+  weight = 2
 
-  [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-  
 [[menu.main]]
   name = "📚 书库"
   url = "/books/"
   weight = 3
+
+# ---------------------------------------------------------------------
+# 渲染设置
+# 注意：这必须是顶层表，之前被误缩进到 [[menu.main]] 里面，
+#       导致 unsafe = true 实际未生效（正文内嵌 HTML 会被转义）。
+# ---------------------------------------------------------------------
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
