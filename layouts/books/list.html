@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+<header class="article-header">
+  <h1>📚 书库</h1>
+  <p>当前收录 {{ len site.Data.books }} 本书。</p>
+</header>
+
+<section class="book-list" aria-label="书籍列表">
+  {{ range site.Data.books }}
+    {{ $pdfPath := printf "/books/%s" .file }}
+    {{ $viewerPath := printf "/pdfjs/web/viewer.html?file=%s" ($pdfPath | urlquery) }}
+    <article class="book-card">
+      <h2 class="book-card__title">{{ .title }}</h2>
+      <p class="book-card__file">{{ .file }}</p>
+      <div class="book-card__actions">
+        <a class="book-card__read" href="{{ $viewerPath | relURL }}" target="_blank" rel="noopener">在线阅读</a>
+        <a class="book-card__download" href="{{ $pdfPath | relURL }}" download>下载 PDF</a>
+      </div>
+    </article>
+  {{ else }}
+    <p>书库暂时没有可用书籍。</p>
+  {{ end }}
+</section>
+
+{{ end }}
